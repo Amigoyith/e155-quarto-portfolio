@@ -1,0 +1,19 @@
+---
+title: "Posts Section"
+
+author: "Amy Liu"
+date: "8/30/24"
+categories:
+  - reflection
+  - labreport
+draft: false
+---
+**Week 1**<br>
+The learning goals for this week can be split into two parts. One is how to keep good version control of codes by setting up Git with a clear structure and another being MCU and FPGA board assembly and tests. By the end of this week's lab, I hope I can learn how to write Verilog code to test out the hardware on board, perform logic simulations in Radiant, and deepen my understanding of circuit debugging.  <br>
+
+Here are the learning objective from the course website for Lab 1:<br>
+*- Assembled your development board for the class and tested out your MCU and FPGA boards.*<br>
+*- Written a Verilog module to control LEDs and a 7-segment display.*<br>
+*- Programmed the FPGA with Verilog code.* <br>
+*- Gained confidence in building, assembling, testing, and debugging circuits.* <br>
+*- Interfaced a 7-segment display to the board.* <br>

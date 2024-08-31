@@ -1,0 +1,20 @@
+---
+title: "E155 Portfolio"
+
+image: images/headshot.jpg
+about:
+    template: jolla
+    links:
+        - icon: linkedin
+          text: LinkedIn
+          href: https://www.linkedin.com/in/xiyuan-liu-amy/
+        - icon: github
+          text: Github
+          href: https://github.com/Amigoyith
+
+
+
+
+---
+Xiyuan Liu (Amy) is a Junior Undergraduate Student at [Harvey Mudd College](https://hmc.edu) majoring in Engineering with the concentration on computer and electric engineering. Her career interests are in the field of embeded systems and automation. In her free time, she enjoys making digital arts and watching animes.
+If you have any questions or suggestion regarding contents of this site, feel free to contact me through this email: amyliu01@g.hmc.edu.
