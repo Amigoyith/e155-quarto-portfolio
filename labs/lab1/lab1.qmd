@@ -15,10 +15,10 @@ Here is the schematics for the circuit of 7 segment display:
 image: images\schematicslab1.jfif
 This is picture for the output successful runthrough of testbenches:
 Seven-segment display
-
+image: images\sevensegtblab1.png
 
 XOR_AND
-
+image: images\XORAND_tblab1.png
 
 The design meets all the requirements that we can alternate between 0-9 and A-F through controlling the four on-off switches.
 This is a picture of the board displaying on the letter F:
