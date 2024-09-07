@@ -22,7 +22,7 @@ instead of using the simple operators like ^ and & for XOR and AND relation, cha
 Moreover, it doesn't realized using a low-speed oscillator can make a 2.4 Hz blinking. Instead it kept the HSOSC module from sample code and says for reset (if counter >= 10000000 begin) slow_clk <= ~slow_clk;
 I'm not entirely sure what it means by slow_clk as there is almost no useful comments on the Chat-GPT code. There is also no reset. 
 
-A recent article I read talks about embedded AI which is described as a cheap innovative AI solutation that can do more than cloud-based AI.
+A recent article I read talks about embedded AI which is described as a cheap innovative AI solutation that can do more than cloud-based AI. 
 Citations: Yuanyuan, F. (2021, July 1). What Is Embedded AI (EAI)? Why Do We Need EAI? - Huawei. Info.support.huawei.com. https://info.support.huawei.com/info-finder/encyclopedia/en/EAI.html
 
 ‌
