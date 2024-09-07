@@ -2,18 +2,27 @@
 title: "Posts Section"
 
 author: "Amy Liu"
-date: "8/30/24"
+date: "9/6/24"
 categories:
   - reflection
   - labreport
 draft: false
 ---
-**Week 1**<br>
-The learning goals for this week can be split into two parts. One is how to keep good version control of codes by setting up Git with a clear structure and another being MCU and FPGA board assembly and tests. By the end of this week's lab, I hope I can learn how to write Verilog code to test out the hardware on board, perform logic simulations in Radiant, and deepen my understanding of circuit debugging.  <br>
+**Week 1 Reflection**<br>
 
-Here are the learning objective from the course website for Lab 1:<br>
-*- Assembled your development board for the class and tested out your MCU and FPGA boards.*<br>
-*- Written a Verilog module to control LEDs and a 7-segment display.*<br>
-*- Programmed the FPGA with Verilog code.* <br>
-*- Gained confidence in building, assembling, testing, and debugging circuits.* <br>
-*- Interfaced a 7-segment display to the board.* <br>
+This week in lab I had learned SystemVerilog programming on Lattice Radiant through basic case statements 
+and also how to use QuestaSim and testbenches in debugging and verifying the codes give desired outcome (similar to C++'s test cases).
+In Lecture, I learned about what is propagation delay and contamination delay in flip-flop and also the setup time constrains and holdtime constraints.
+These are useful knowledge coming into digital design interview and working with synchronous clock system. In class, we also practiced in designing a finite state machine.
+Through the lab checkoff this week, I realized the harm of floating reset could cause whether the led works depends on luck.
+The course really trained me up in developing determination in achieveing all the lab's goal. 
+
+The AI Prototype turns out to work better than I imagined. I put in some sample codes and the truth table of the XOR-AND into chat-GPT 4 free trial. It's outputs can't be synthesized.
+instead of using the simple operators like ^ and & for XOR and AND relation, chat-GPT just write a combinational case statements for each line of the truth table.
+Moreover, it doesn't realized using a low-speed oscillator can make a 2.4 Hz blinking. Instead it kept the HSOSC module from sample code and says for reset (if counter >= 10000000 begin) slow_clk <= ~slow_clk;
+I'm not entirely sure what it means by slow_clk as there is almost no useful comments on the Chat-GPT code. There is also no reset. 
+
+A recent article I read talks about embedded AI which is described as a cheap innovative AI solutation that can do more than cloud-based AI.
+Citations: Yuanyuan, F. (2021, July 1). What Is Embedded AI (EAI)? Why Do We Need EAI? - Huawei. Info.support.huawei.com. https://info.support.huawei.com/info-finder/encyclopedia/en/EAI.html
+
+‌
