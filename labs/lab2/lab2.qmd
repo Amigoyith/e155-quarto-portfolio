@@ -22,7 +22,7 @@ I wrote a testbench that didn't cover all the cases but covers possible types of
 
 
 As shown by the testbenches and uploading design onto the board to physically test out all possible combinations, the project at least achieved the goal of this lab 2 to display two digits simultaneously. <br>
-![](images\lab2physicalproduct.jpg)<br>
+![](labs\lab2\images\lab2workingactualboard.jpeg)<br>
 
 However, the organization and naming of the program is rather messy and seems to contain many unused variables and the names of variables didn't capture the essence of it's function (i.e. reset is actual not reset and anode is just the object name which could be confusing to know it's funciton in the future). I started to get accustomed to the modular design appraoch of FPGA but still needs to force myself to practice more on it like separating MUX into it's own module and only use clk in the top modular level. The testbenches could also needs some rework in adding more cases and test the clock cycles with the change of anode control separately from the summation. <br>
 
