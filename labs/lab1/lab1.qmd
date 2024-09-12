@@ -1,6 +1,7 @@
 
 
 ## Lab 1:FPGA and MCU Setup and Testing<br>
+**Introduction**<br>
 The main goal of this assignment is to learn SMD in board assembly and learn how to use Lattice Radiant to write basic combinational System Verilog codes. By the end of this week's lab, I hope I can learn how to write Verilog code to test out the hardware on board, perform logic simulations in Radiant, and deepen my understanding of circuit debugging.  We are going to use on-board led to test the FPGA and also construct a functional hexadecimal 7-segment display.<br>
 
 **Design Approach**<br>
@@ -8,11 +9,12 @@ In the case of testing the board, the lab manual suggested implementing a XOR an
 When working with the seven segment display, it’s good to use combinational logic to make case statements for each combination of 4 binary switches. I draw out the diagram for a seven segment display and assign seg[0] to be the segment a, seg[1] to be segment b according to the ascending order and assign free pins under FPGA for later breadboard testing.<br>
 Here is the block diagram of the top module:<br>
 ![](images\lab1blockdiagram.jpg)<br>
+In order to provide 5-20mA of currents towards the segment LED, I choose to use a resistor of 68 ohms so that using ohm's law(V=iR): I = (Vcc-Vf)/R = (3.3V-2.1V)/68 ohms =0.017A which is within the range of acceptable current. Here is the schematics for the circuit of 7 segment display:<br>
+![](images\lab1schematics.jpg)<br>
 
 **Testing Approach**<br>
-To make sure the design works as expected, I tested both through hardware breadboarding onto an actual 7 segment display led and also used QuestaSim inside Lattice Radiant. I ran through all possible combinations of 4 binary switches to ensure no edge cases are left.
-Here is the schematics for the circuit of 7 segment display:<br>
-![](images\lab1schematics.jpg)<br>
+To make sure the design works as expected, I tested both through hardware breadboarding onto an actual 7 segment display led and also used QuestaSim inside Lattice Radiant. I ran through all possible combinations of 4 binary switches to ensure no edge cases are left.<br>
+
 This is picture for the output successful runthrough of testbenches:<br>
 Seven-segment display<br>
 ![](images\lab1sevendisplay.jpg)<br>
@@ -20,7 +22,8 @@ Seven-segment display<br>
 XOR_AND<br>
 ![](images\lab1blinkXORANDtb.jpg)<br>
 
-The design meets all the requirements that we can alternate between 0-9 and A-F through controlling the four on-off switches.
+**Conclusion**<br>
+The design meets all the requirements that we can alternate between 0-9 and A-F through controlling the four on-off switches.<br>
 This is a picture of the board displaying on the letter F:<br>
 ![](images\lab2physicalproduct.jpg)<br>
 
