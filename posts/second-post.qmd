@@ -1,0 +1,15 @@
+---
+title: "Posts Section"
+
+author: "Amy Liu"
+date: "9/13/24"
+categories:
+  - reflection
+  - labreport
+draft: false
+---
+**Week 2 Reflection**<br>
+
+This week we learned in course on how to use the FPGA documentation, specifically how to find information we'd like (e.g. operating conditions) maunally without control F. We also further practiced how to write basic testbench review. Something useful I learned is that you don't necessarily need to write out all testvectors to use run a testbenches, rather we can just start with some simple inputs and observe the simulation running results on the wave windows. We also refresh on C programming like what does volatile (use latest value rather than cached) mean and how to dereference. We also touch upon some MCU related design architecture but I think I'm still a bit confuse over how memory map works?<br>
+
+An article I read this week relating to embedded system is called [Bluetooth Can Now Measure Distance, With Hardware Support En Route](https://www.allaboutcircuits.com/news/bluetooth-can-now-measure-distance-hardware-support-en-route/). The concept of bluetooth channel sounding that enable accurate distance measurement relates to a method called round tip timing which is thhe time between transmit and receive. Viewing through the lens of what we learned in Synchronous Design, RTT involves very very small time values so that if we don't have high enough clock speed, we might not have accurate distance management.Time of flight (TOF) is half of RTT but includes some delays in the reflection system.
