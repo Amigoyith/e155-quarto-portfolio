@@ -1,1 +1,17 @@
 ## Lab 3: Keypad Scanner
+
+##### DESIGN CHOICE<br>
+**DEBOUNCE**<br>
+The debounce strategy I choose to implement is based upon a counter (*debounce_counter*) and limitation time (*DEBOUNCE_TIME*) in order to make sure the noise from the hardware are not registered to results in incorrect display. The debounce_counter would basically increments 1 every clock cycle until reaching the desired clock cycles to transition to the PRESS states, else we would stay at the debounce state or if key is released, we transfer back to the SCAN states. The advantage of this mehod is it's accuracy in filtering out nose from the mechanical keys and gives flexibility by changing the DEBOUNCE_TIME to reflect for other kinds of switches or noise that may require fast or slower debounce time. However, the tradeoffs is there is a little delay in the display of digits as we need to have the debounce_counter to reach the DEBOUNCE TIME. Other possible methods could be implementing debounce on the hardware directly using a RC filter to only allow certain signals to pass through. This methods is quicker in response and also doesn't take up any digital resources for making the debounce, the tradeoff would be we can't adjust the filter as easy as the DEBOUNCE_TIME so we need to recalculate for the resistors and capcitors values each time for change in debounce requirements.<br>
+![](images\fsmscanner.jpg)<br>
+![](images\fsmscannertable.jpg)<br>
+**Digit Storage**<br>
+My storage_ctrl module used a simple two-register buffer (*dig0，dig1*) to control the storage of the last two recent presses on the keypad to be displayed where the most recent dig0 is on the right and the second most recent dig1 is on the left. This design is simple to implement and as it's a separate module from the scanner module fsm, the modularization makes debugging process easier and has a less complicated (less states at least) fsm. This module can also later be used for other design purpose if needed. <br>
+![](images\fsmstoragectrltable.jpg)<br>
+**Scanning and Detecting**<br>
+I detect te rising edge of the key_pressed sgnal using the *last_key* meaning the digits would showup on the 7-segment display whenever the press happens. This helps me to achieve the goal of only register press once and during hold down, not register other presses nor repeating the register of the same digit being held down on the keypad. Another design choice is let the system respond to the key_pressed signals so that the display shows up upon the release of keys. The tradeoffs there however is higher response time of the display and doesn't make intuitive to normal typing behaviors of people. For scanning, I choose to scan rows. Scanning columns would work basically the same. I could attempt parallel scanning but that's over complicated for the purpose of the lab.
+![](images\fsmscanrows.jpg)<br>
+![](images\fsmrowscanntable.jpg)<br>
+##### Test Benches
+![](images\testbenchtop.jpg)<br>
+![](images\testbenchwithoutsyncindividual.jpg)<br>
