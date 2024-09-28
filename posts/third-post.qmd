@@ -1,0 +1,19 @@
+---
+title: "Posts Section"
+
+author: "Amy Liu"
+date: "9/19/24"
+categories:
+  - reflection
+  - labreport
+draft: false
+---
+**Week 3 Reflection**<br>
+
+Moving (temporarily) away from FPGA, we are learning about STM32, one of the most classic starter MCU and refreshing upon C language. I learned C++ in CS70 so was a little bit familiar syntax wise (and the pointer memory address issue...) and unfamiliar (no classes and objects?!) to C. On my clinic project, I was programming esp32 SoCs through ESP-IDF and arduino. I found esp32 is much harder to learn for beginner though arduino language that based on C++ is more familiar to me but ESP-IDF is so complicated. Though, due to the arduino open-source community, I got the esp32 to blink and setup a BLE server quickly while for stm32, it took me some time to understand the clock configuration in the blinking tutorial. <br>
+Going back to the character development, I felt I really need to improve upon resourcefulness and adventurous character. After weeks of rewriting and banging my head on the code, I got my lab3 keypad scanner to work at Saturday 5:32pm using oscilloscope to detect the transition of states. I'm just one line (transition out of a condition in DEBOUNCE back to SCAN) towards complete work from a uncompletely random response:/<br>
+I didn't find a AI prototype for this week's lab, so I let send my fsm to chatGPT and let it make a art piece out of it:<br>
+![](images\fsmscanner.jpg)<br>
+Original fsm
+![](images\AI_drawingofscanner.jpg)<br>
+*The Symphony of States*

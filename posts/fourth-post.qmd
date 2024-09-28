@@ -1,0 +1,15 @@
+---
+title: "Posts Section"
+
+author: "Amy Liu"
+date: "9/26/24"
+categories:
+  - reflection
+  - labreport
+draft: false
+---
+**Week 4 Reflection**<br>
+
+
+In class this week, we learned about CMSIS and how to configure interrupts to respond to on-board peripherals like GPIO pins and timers. From the ARM website, CMSIS is "a vendor-independent hardware abstraction layer of microcontrollers that are besed on Arm Cortex Processors." The ARM website contains a lot of relevatn documentations and traning courses on their relevant architeectures and protocols. Rather recently, Rasberry Pi SDK released a new CMSIS Device Family Pack support for their product so that you can use their boards seamlessly with all of the Arm's CMSIS tools. Previsously on Rasberry Pi Pico SDK. they don't have the standard CMSIS core headers and register definitions (they used their own m0plus.h instead). Here is a link to this news released: https://www.raspberrypi.com/news/new-rp2040-cmsis-pack/.<br>
+For the project, I looked up some beginner project using STM32 like temperature control, smart furniture control, waveform display, Rubik'scube solver etc. I;m currently debating between choosing a existing project as base and making extension on that or try to be creative to generate a completely new project but with risk to never work at all.
