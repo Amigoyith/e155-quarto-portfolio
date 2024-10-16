@@ -1,1 +1,2 @@
 ## Lab 4: Digital Audio
+{{< video https://youtu.be/J0WxFshaBSw?si=2lZFceno9yPJq5Lg >}}
