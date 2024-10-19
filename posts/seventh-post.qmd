@@ -1,9 +1,8 @@
-
 ---
 title: "Posts Section"
 
 author: "Amy Liu"
-date: "10/11/24"
+date: "10/18/24"
 categories:
   - reflection
   - labreport
