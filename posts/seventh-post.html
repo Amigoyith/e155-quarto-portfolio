@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>E155 Blog – E155 Portfolio</title>
+<title>seventh-post – E155 Portfolio</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,24 +23,22 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -68,67 +66,9 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
 
-    const options = {
-      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
-
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../styles.css">
 </head>
 
 <body class="nav-fixed">
@@ -138,7 +78,7 @@ window.Quarto = {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">E155 Portfolio</span>
     </a>
   </div>
@@ -149,7 +89,7 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./blog.html" aria-current="page"> 
+    <a class="nav-link" href="../blog.html"> 
 <span class="menu-text">Blog</span></a>
   </li>  
   <li class="nav-item dropdown ">
@@ -158,31 +98,31 @@ window.Quarto = {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-labs">    
         <li>
-    <a class="dropdown-item" href="./labs/lab1/lab1.html">
+    <a class="dropdown-item" href="../labs/lab1/lab1.html">
  <span class="dropdown-text">Lab 1</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./labs/lab2/lab2.html">
+    <a class="dropdown-item" href="../labs/lab2/lab2.html">
  <span class="dropdown-text">Lab 2</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./labs/lab3/lab3.html">
+    <a class="dropdown-item" href="../labs/lab3/lab3.html">
  <span class="dropdown-text">Lab 3</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./labs/lab4/lab4.html">
+    <a class="dropdown-item" href="../labs/lab4/lab4.html">
  <span class="dropdown-text">Lab 4</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./labs/lab5/lab5.html">
+    <a class="dropdown-item" href="../labs/lab5/lab5.html">
  <span class="dropdown-text">Lab 5</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./labs/lab6/lab6.html">
+    <a class="dropdown-item" href="../labs/lab6/lab6.html">
  <span class="dropdown-text">Lab 6</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./labs/lab7/lab7.html">
+    <a class="dropdown-item" href="../labs/lab7/lab7.html">
  <span class="dropdown-text">Lab 7</span></a>
   </li>  
     </ul>
@@ -208,226 +148,17 @@ window.Quarto = {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">E155 Blog</h1>
-</div>
 
 
 
-<div class="quarto-title-meta">
-
-    
-  
-    
-  </div>
-  
-
-
-</header>
+<p>author: “Amy Liu” date: “10/18/24” categories: - reflection - labreport draft: false</p>
+<hr>
+<p><strong>Week 7 Reflection</strong><br></p>
+<p>As we didn’t have a lecture for this week, I will just briefly expand on our project idea and some embedded system news. Here is our project statement: The goal of our project is to create an interactive 2D physics engine that simulates the motion of small (sand-like) particle represented by pixels in a Earth-like gravity environment. The system will use a 64x64 LED matrix screen to display the simulation and an accelerometer to detect the device orientation. The particle will behave as if in a box-like 2D world with boundaries and moving similar to sand falling under gravity. The user would interact by rotating around the boundaries of the led screen to visualize the dynamic change in particle motion. We will see how much it changes as time moves on. The Embedded World 2024 just happened this October in Austin. Here are some <a href="https://memfault.com/blog/embedded-world-2024-5-hot-topics-and-key-takeaways/">hot takes</a>:A major theme of the conference is the integration of AI to enhance functionality, there are some cool demonstration like speech recognition and generating driver code. They also discuss software-centric development shifts more than hardware-base especially in areas of automative industry where OTA (over-the-air) updates became essential. Under the EU’s Cyber Resilience Act, cybersecurity became a key concern of the embedded conference. Thus it looks like Rust became a popular programming language in its property of improving security and system integrity as an alternative to C89 under the context of IoT product development. Also, Zephyr, an open source RTOS, also draws a lot interests.</p>
 
 
 
-
-
-
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-listing-file-modified-sort="1729320133739" data-listing-reading-time-sort="2" data-listing-word-count-sort="259">
-<div class="thumbnail">
-<p><a href="./posts/seventh-post.html" class="no-external"></a></p><a href="./posts/seventh-post.html" class="no-external">
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-</a><p><a href="./posts/seventh-post.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/seventh-post.html" class="no-external">draft: false</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/seventh-post.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="./posts/seventh-post.html" class="no-external">author: “Amy Liu” date: “10/18/24” categories: - reflection - labreport draft: false</a>
-</div>
-</div>
-<div class="metadata">
-<p><a href="./posts/seventh-post.html" class="no-external"></a></p><a href="./posts/seventh-post.html" class="no-external">
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-categories="reflection,labreport" data-listing-date-sort="1729234800000" data-listing-file-modified-sort="1729318082100" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="179">
-<div class="thumbnail">
-<p><a href="./posts/sixth-post.html" class="no-external"></a></p><a href="./posts/sixth-post.html" class="no-external">
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-</a><p><a href="./posts/sixth-post.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/sixth-post.html" class="no-external">Posts Section</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/sixth-post.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="./posts/sixth-post.html" class="no-external"><strong>Week 6 Reflection</strong><br></a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/sixth-post.html" class="no-external">
-<div class="listing-date">
-Oct 18, 2024
-</div>
-<div class="listing-author">
-Amy Liu
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="2" data-categories="reflection,labreport" data-listing-date-sort="1728630000000" data-listing-file-modified-sort="1729318683569" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="172">
-<div class="thumbnail">
-<p><a href="./posts/fifth-post..html" class="no-external"></a></p><a href="./posts/fifth-post..html" class="no-external">
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-</a><p><a href="./posts/fifth-post..html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/fifth-post..html" class="no-external">Posts Section</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/fifth-post..html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="./posts/fifth-post..html" class="no-external"><strong>Week 5 Reflection</strong><br></a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/fifth-post..html" class="no-external">
-<div class="listing-date">
-Oct 11, 2024
-</div>
-<div class="listing-author">
-Amy Liu
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="3" data-categories="reflection,labreport" data-listing-date-sort="1727334000000" data-listing-file-modified-sort="1727505847334" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="201">
-<div class="thumbnail">
-<p><a href="./posts/fourth-post.html" class="no-external"></a></p><a href="./posts/fourth-post.html" class="no-external">
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-</a><p><a href="./posts/fourth-post.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/fourth-post.html" class="no-external">Posts Section</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/fourth-post.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="./posts/fourth-post.html" class="no-external"><strong>Week 4 Reflection</strong><br></a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/fourth-post.html" class="no-external">
-<div class="listing-date">
-Sep 26, 2024
-</div>
-<div class="listing-author">
-Amy Liu
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="4" data-categories="reflection,labreport" data-listing-date-sort="1726729200000" data-listing-file-modified-sort="1727504428570" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="228">
-<div class="thumbnail">
-<p><a href="./posts/third-post.html" class="no-external"></a></p><a href="./posts/third-post.html" class="no-external">
-<p class="card-img-top"><img src="posts\images\fsmscanner.jpg"  class="thumbnail-image card-img"/></p>
-</a><p><a href="./posts/third-post.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/third-post.html" class="no-external">Posts Section</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/third-post.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="./posts/third-post.html" class="no-external"><strong>Week 3 Reflection</strong><br></a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/third-post.html" class="no-external">
-<div class="listing-date">
-Sep 19, 2024
-</div>
-<div class="listing-author">
-Amy Liu
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="5" data-categories="reflection,labreport" data-listing-date-sort="1726210800000" data-listing-file-modified-sort="1727499644169" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="219">
-<div class="thumbnail">
-<p><a href="./posts/second-post.html" class="no-external"></a></p><a href="./posts/second-post.html" class="no-external">
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-</a><p><a href="./posts/second-post.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/second-post.html" class="no-external">Posts Section</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/second-post.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="./posts/second-post.html" class="no-external"><strong>Week 2 Reflection</strong><br></a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/second-post.html" class="no-external">
-<div class="listing-date">
-Sep 13, 2024
-</div>
-<div class="listing-author">
-Amy Liu
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="6" data-categories="reflection,labreport" data-listing-date-sort="1725606000000" data-listing-file-modified-sort="1727499644169" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="246">
-<div class="thumbnail">
-<p><a href="./posts/first-post.html" class="no-external"></a></p><a href="./posts/first-post.html" class="no-external">
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-</a><p><a href="./posts/first-post.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/first-post.html" class="no-external">Posts Section</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/first-post.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="./posts/first-post.html" class="no-external"><strong>Week 1 Reflection</strong><br></a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/first-post.html" class="no-external">
-<div class="listing-date">
-Sep 6, 2024
-</div>
-<div class="listing-author">
-Amy Liu
-</div>
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
