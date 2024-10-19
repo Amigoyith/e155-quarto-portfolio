@@ -1,6 +1,5 @@
 ---
 title: "Posts Section"
-
 author: "Amy Liu"
 date: "10/18/24"
 categories:
