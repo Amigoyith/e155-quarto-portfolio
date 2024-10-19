@@ -1,0 +1,13 @@
+---
+title: "Posts Section"
+
+author: "Amy Liu"
+date: "10/11/24"
+categories:
+  - reflection
+  - labreport
+draft: false
+---
+**Week 5 Reflection**<br>
+
+This week in class we learned iot and duplex commmunication so that we can later configure the SPI interface between our STM32 and the temperature sensor. We discuss asynchronous (USART) vs. synchronous (SPI) serial interface that sychronous communication shared a clock between device while asynchronous communication does not. Here in Lab6 we are going to use ESP8266 wifi module to connected to the MCU so that their data can be transmitted wirelessly over WiFi to a webserver hosted on the ESP8266. IoT sensors are commonly used for environmental monitor and smart furniture projects. We could focus our project on such to make like a wearable device that track health or complicated IoT system like edge computing where processing done on the device rather cloud, this reduces latency and this techniques is usually used in autonomous vehicles. We could also secure our USART communication by making encrypted USART communication and Transport Layer Security over HTTP to ensure the integrity of our data. I think some ESP module might support such protocols.

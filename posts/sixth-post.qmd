@@ -1,0 +1,13 @@
+---
+title: "Posts Section"
+
+author: "Amy Liu"
+date: "10/18/24"
+categories:
+  - reflection
+  - labreport
+draft: false
+---
+**Week 6 Reflection**<br>
+
+This week I mainly worked on the project proposal with my partner Stephen Xu. Our initial idea is to build an RFID emulator that can open harvey mudd's swipe system as it reads our cards' swipe access but realized the 13.5MHz used by the HID system is hard to achieve throught our oscialltor on FPGA. This make sense as the frequency is set to make sure the security is hard to hack. In the [history of RFID](https://www.rfidjournal.com/expert-views/the-history-of-rfid-technology/76202/), 125kHz was first used for smaller transponders than campnay commercialized and move up to higher frequency range of 13.5MHz; there are also Ultra-High frequency RFID but never get commercialized. Then we thought to emulate 125kHz RFID and buy our own cards and RFID writer/reader module however as we plan out the handshake process, we felt like everything can be done on MCU while FPGA don't have the opportunity to shine. So we turned towards the idea of physics engine inspired by the game beaker, where the user can interact with screen to move the object inside the container around. 
