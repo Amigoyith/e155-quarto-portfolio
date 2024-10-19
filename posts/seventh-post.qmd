@@ -1,6 +1,9 @@
 
+---
+title: "Posts Section"
+
 author: "Amy Liu"
-date: "10/18/24"
+date: "10/11/24"
 categories:
   - reflection
   - labreport
@@ -9,4 +12,4 @@ draft: false
 **Week 7 Reflection**<br>
 
 As we didn't have a lecture for this week, I will just briefly expand on our project idea and some embedded system news. Here is our project statement: The goal of our project is to create an interactive 2D physics engine that simulates the motion of small (sand-like) particle represented by pixels in a Earth-like gravity environment. The system will use a 64x64 LED matrix screen to display the simulation and an accelerometer to detect the device orientation. The particle will behave as if in a box-like 2D world with boundaries and moving similar to sand falling under gravity. The user would interact by rotating around the boundaries of the led screen to visualize the dynamic change in particle motion. We will see how much it changes as time moves on.
-The Embedded World 2024 just happened this October in Austin. Here are some [hot takes](https://memfault.com/blog/embedded-world-2024-5-hot-topics-and-key-takeaways/):A major theme of the conference is the integration of AI to enhance functionality, there are some cool demonstration like speech recognition and generating driver code. They also discuss software-centric development shifts more than hardware-base especially in areas of automative industry where OTA (over-the-air) updates became essential. Under the EU's Cyber Resilience Act, cybersecurity became a key concern of the embedded conference. Thus it looks like Rust became a popular programming language in its property of improving security and system integrity as an alternative to C89 under the context of IoT product development. Also, Zephyr, an open source RTOS, also draws a lot interests.
+The Embedded World 2024 just happened this October in Austin. Here are some [hot takes](https://memfault.com/blog/embedded-world-2024-5-hot-topics-and-key-takeaways/): A major theme of the conference is the integration of AI to enhance functionality, there are some cool demonstration like speech recognition and generating driver code. They also discuss software-centric development shifts more than hardware-base especially in areas of automative industry where OTA (over-the-air) updates became essential. Under the EU's Cyber Resilience Act, cybersecurity became a key concern of the embedded conference. Thus it looks like Rust became a popular programming language in its property of improving security and system integrity as an alternative to C89 under the context of IoT product development. Also, Zephyr, an open source RTOS, also draws a lot interests.
