@@ -147,7 +147,13 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#lab-2-multiplexed-7-segment-display" id="toc-lab-2-multiplexed-7-segment-display" class="nav-link active" data-scroll-target="#lab-2-multiplexed-7-segment-display">Lab 2: Multiplexed 7-Segment Display</a></li>
+  <li><a href="#lab-2-multiplexed-7-segment-display" id="toc-lab-2-multiplexed-7-segment-display" class="nav-link active" data-scroll-target="#lab-2-multiplexed-7-segment-display"><strong>Lab 2: Multiplexed 7-Segment Display</strong></a>
+  <ul class="collapse">
+  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction"><strong>Introduction</strong> <br></a></li>
+  <li><a href="#design-and-testing-methodology" id="toc-design-and-testing-methodology" class="nav-link" data-scroll-target="#design-and-testing-methodology"><strong>Design and Testing Methodology</strong><br></a></li>
+  <li><a href="#technical-documentation" id="toc-technical-documentation" class="nav-link" data-scroll-target="#technical-documentation"><strong>Technical Documentation</strong><br></a></li>
+  <li><a href="#results-and-discussion" id="toc-results-and-discussion" class="nav-link" data-scroll-target="#results-and-discussion"><strong>Results and Discussion</strong><br></a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -158,17 +164,28 @@ ul.task-list li input[type="checkbox"] {
 
 
 <section id="lab-2-multiplexed-7-segment-display" class="level2">
-<h2 class="anchored" data-anchor-id="lab-2-multiplexed-7-segment-display">Lab 2: Multiplexed 7-Segment Display</h2>
-<p><strong>Introduction</strong> <br></p>
+<h2 class="anchored" data-anchor-id="lab-2-multiplexed-7-segment-display"><strong>Lab 2: Multiplexed 7-Segment Display</strong></h2>
+<section id="introduction" class="level3">
+<h3 class="anchored" data-anchor-id="introduction"><strong>Introduction</strong> <br></h3>
 <p>Lab 2 is a continuation based on Lab 1’s work on a seven-segment display but instead of using a single display, we are using a dual display. The challenge lies in still using the same amount of I/O pins so we have to implement a time-multiplexing scheme. Time-multiplexing is a useful computer technique for data transmission, resource allocation, and reducing bandwidth. We are also learning how to use the FPGA Lattice manual to find operating conditions that would assist us in circuit building. <br></p>
-<p><strong>Design and Testing Methodology</strong><br> Wiring<br> According to the iCE40UP Data sheet on page 34, the maximum current that can be drawn from the I/O pins is 8mA and the voltage drop for the PNP transistor is 0.7V. Using Ohm’s Law V=IR without V input being 3.3V, we would need to use a resistor that at least has: (3.3V-0.7V)/0.008A = 325 ohms. The closest upper-bounded one would be the 330 ohms resistor. I chose a 1k resistor just to be safe. For the LEDs, the resistor needs to have: (3.3V-2V)/0.02A = 65 ohms (see Lab 1 for details) and the closest choice is the 68 ohms resistor. We choose to use 2N3906 PNP transistors to drive large enough currents toward the anode pins of the dual display with an emitter on 3.3Vcpp and collector to the anode and base to the GPIO pins. <br> Software<br> When developing the SystemVerilog module for this lab, I thought of reusing the independent seven-segment display module from lab 1 that contains all the combinational case statements for each switch combination. I have a freq_switch that basically toggles at a certain frequency determined by the counter and is later used to determine the status of the anode that declares which digits are on or off (only one can be on at the time). The sum is gotten by just performing binary summation on the two inputs s1 and s2. I used a high-speed oscillator that has a 24MHz frequency and a 12 bits counter so that my resulting flickering frequency would be: 24*10^6 / (2^12) = 5859 Hz which is more than enough for human eyes not to catch any lagging.<br></p>
-<p><strong>Technical Documentation</strong><br> The following is the final schematic of the circuit.<br> <img src="images\scehmaticslab2.jpg" class="img-fluid"><br> The following is the block diagram for the structures of FPGA modules. <br> <img src="images\blockdiagramlab2.jpg" class="img-fluid"><br></p>
-<p><strong>Results and Discussion</strong><br> I wrote a testbench that didn’t cover all the cases but covers possible types of cases and edge cases of two same inputs, two different inputs. The format of testvectors is:input1_input2_anode_seg_sum.<br> <img src="images\lab2_AL_tb.jpg" class="img-fluid"><br></p>
+</section>
+<section id="design-and-testing-methodology" class="level3">
+<h3 class="anchored" data-anchor-id="design-and-testing-methodology"><strong>Design and Testing Methodology</strong><br></h3>
+<p>Wiring<br> According to the iCE40UP Data sheet on page 34, the maximum current that can be drawn from the I/O pins is 8mA and the voltage drop for the PNP transistor is 0.7V. Using Ohm’s Law V=IR without V input being 3.3V, we would need to use a resistor that at least has: (3.3V-0.7V)/0.008A = 325 ohms. The closest upper-bounded one would be the 330 ohms resistor. I chose a 1k resistor just to be safe. For the LEDs, the resistor needs to have: (3.3V-2V)/0.02A = 65 ohms (see Lab 1 for details) and the closest choice is the 68 ohms resistor. We choose to use 2N3906 PNP transistors to drive large enough currents toward the anode pins of the dual display with an emitter on 3.3Vcpp and collector to the anode and base to the GPIO pins. <br> Software<br> When developing the SystemVerilog module for this lab, I thought of reusing the independent seven-segment display module from lab 1 that contains all the combinational case statements for each switch combination. I have a freq_switch that basically toggles at a certain frequency determined by the counter and is later used to determine the status of the anode that declares which digits are on or off (only one can be on at the time). The sum is gotten by just performing binary summation on the two inputs s1 and s2. I used a high-speed oscillator that has a 24MHz frequency and a 12 bits counter so that my resulting flickering frequency would be: 24*10^6 / (2^12) = 5859 Hz which is more than enough for human eyes not to catch any lagging.<br></p>
+</section>
+<section id="technical-documentation" class="level3">
+<h3 class="anchored" data-anchor-id="technical-documentation"><strong>Technical Documentation</strong><br></h3>
+<p>The following is the final schematic of the circuit.<br> <img src="images\lab2schematics.jpg" class="img-fluid"><br> The following is the block diagram for the structures of FPGA modules. <br> <img src="images\lab2blockdiagram.jpg" class="img-fluid"><br></p>
+</section>
+<section id="results-and-discussion" class="level3">
+<h3 class="anchored" data-anchor-id="results-and-discussion"><strong>Results and Discussion</strong><br></h3>
+<p>I wrote a testbench that didn’t cover all the cases but covers possible types of cases and edge cases of two same inputs, two different inputs. The format of testvectors is:input1_input2_anode_seg_sum.<br> <img src="images\lab2_AL_tb.jpg" class="img-fluid"><br></p>
 <p>As shown by the testbenches and uploading design onto the board to physically test out all possible combinations, the project at least achieved the goal of this lab 2 to display two digits simultaneously. <br> <img src="images\lab2baord.jpg" class="img-fluid"><br></p>
-<p>However, the organization and naming of the program is rather messy and seems to contain many unused variables and the names of variables didn’t capture the essence of it’s function (i.e.&nbsp;reset is actual not reset and anode is just the object name which could be confusing to know it’s funciton in the future). I started to get accustomed to the modular design appraoch of FPGA but still needs to force myself to practice more on it like separating MUX into it’s own module and only use clk in the top modular level. The testbenches could also needs some rework in adding more cases and test the clock cycles with the change of anode control separately from the summation. <br></p>
+<p>However, the organization and naming of the program are rather messy and seem to contain many unused variables. Thee names of variables didn’t capture the essence of their function (i.e.&nbsp;reset is not reset and anode is just the object name which could be confusing to know it’s function in the future). I started to get accustomed to the modular design approach of FPGA but still need to force myself to practice more on it like separating MUX into its modules and only using clk at the top modular level. The test benches could also need some rework in adding more cases and testing the clock cycles with the change of anode control separately from the summation. <br></p>
 <p><strong>Conclusion</strong><br> This marks the preliminary success of lab2, I spent 20 hours on this lab.</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
