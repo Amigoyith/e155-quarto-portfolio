@@ -153,6 +153,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#design-and-testing-methodology" id="toc-design-and-testing-methodology" class="nav-link" data-scroll-target="#design-and-testing-methodology"><strong>Design and Testing Methodology</strong><br></a></li>
   <li><a href="#technical-documentation" id="toc-technical-documentation" class="nav-link" data-scroll-target="#technical-documentation"><strong>Technical Documentation</strong><br></a></li>
   <li><a href="#results-and-discussion" id="toc-results-and-discussion" class="nav-link" data-scroll-target="#results-and-discussion"><strong>Results and Discussion</strong><br></a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion"><strong>Conclusion</strong><br></a></li>
   </ul></li>
   </ul>
 </nav>
@@ -171,7 +172,10 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="design-and-testing-methodology" class="level3">
 <h3 class="anchored" data-anchor-id="design-and-testing-methodology"><strong>Design and Testing Methodology</strong><br></h3>
-<p>Wiring<br> According to the iCE40UP Data sheet on page 34, the maximum current that can be drawn from the I/O pins is 8mA and the voltage drop for the PNP transistor is 0.7V. Using Ohm’s Law V=IR without V input being 3.3V, we would need to use a resistor that at least has: (3.3V-0.7V)/0.008A = 325 ohms. The closest upper-bounded one would be the 330 ohms resistor. I chose a 1k resistor just to be safe. For the LEDs, the resistor needs to have: (3.3V-2V)/0.02A = 65 ohms (see Lab 1 for details) and the closest choice is the 68 ohms resistor. We choose to use 2N3906 PNP transistors to drive large enough currents toward the anode pins of the dual display with an emitter on 3.3Vcpp and collector to the anode and base to the GPIO pins. <br> Software<br> When developing the SystemVerilog module for this lab, I thought of reusing the independent seven-segment display module from lab 1 that contains all the combinational case statements for each switch combination. I have a freq_switch that basically toggles at a certain frequency determined by the counter and is later used to determine the status of the anode that declares which digits are on or off (only one can be on at the time). The sum is gotten by just performing binary summation on the two inputs s1 and s2. I used a high-speed oscillator that has a 24MHz frequency and a 12 bits counter so that my resulting flickering frequency would be: 24*10^6 / (2^12) = 5859 Hz which is more than enough for human eyes not to catch any lagging.<br></p>
+<section id="wiring" class="level4">
+<h4 class="anchored" data-anchor-id="wiring">Wiring<br></h4>
+<p>According to the iCE40UP Data sheet on page 34, the maximum current that can be drawn from the I/O pins is 8mA and the voltage drop for the PNP transistor is 0.7V. Using Ohm’s Law V=IR without V input being 3.3V, we would need to use a resistor that at least has: (3.3V-0.7V)/0.008A = 325 ohms. The closest upper-bounded one would be the 330 ohms resistor. I chose a 1k resistor just to be safe. For the LEDs, the resistor needs to have: (3.3V-2V)/0.02A = 65 ohms (see Lab 1 for details) and the closest choice is the 68 ohms resistor. We choose to use 2N3906 PNP transistors to drive large enough currents toward the anode pins of the dual display with an emitter on 3.3Vcpp and collector to the anode and base to the GPIO pins. <br> #### Software<br> When developing the SystemVerilog module for this lab, I thought of reusing the independent seven-segment display module from lab 1 that contains all the combinational case statements for each switch combination. I have a freq_switch that basically toggles at a certain frequency determined by the counter and is later used to determine the status of the anode that declares which digits are on or off (only one can be on at the time). The sum is gotten by just performing binary summation on the two inputs s1 and s2. I used a high-speed oscillator that has a 24MHz frequency and a 12 bits counter so that my resulting flickering frequency would be: 24*10^6 / (2^12) = 5859 Hz which is more than enough for human eyes not to catch any lagging.<br> Here is my source code and simulation: https://github.com/Amigoyith/e155-lab2/tree/main<br></p>
+</section>
 </section>
 <section id="technical-documentation" class="level3">
 <h3 class="anchored" data-anchor-id="technical-documentation"><strong>Technical Documentation</strong><br></h3>
@@ -182,7 +186,10 @@ ul.task-list li input[type="checkbox"] {
 <p>I wrote a testbench that didn’t cover all the cases but covers possible types of cases and edge cases of two same inputs, two different inputs. The format of testvectors is:input1_input2_anode_seg_sum.<br> <img src="images\lab2_AL_tb.jpg" class="img-fluid"><br></p>
 <p>As shown by the testbenches and uploading design onto the board to physically test out all possible combinations, the project at least achieved the goal of this lab 2 to display two digits simultaneously. <br> <img src="images\lab2baord.jpg" class="img-fluid"><br></p>
 <p>However, the organization and naming of the program are rather messy and seem to contain many unused variables. Thee names of variables didn’t capture the essence of their function (i.e.&nbsp;reset is not reset and anode is just the object name which could be confusing to know it’s function in the future). I started to get accustomed to the modular design approach of FPGA but still need to force myself to practice more on it like separating MUX into its modules and only using clk at the top modular level. The test benches could also need some rework in adding more cases and testing the clock cycles with the change of anode control separately from the summation. <br></p>
-<p><strong>Conclusion</strong><br> This marks the preliminary success of lab2, I spent 20 hours on this lab.</p>
+</section>
+<section id="conclusion" class="level3">
+<h3 class="anchored" data-anchor-id="conclusion"><strong>Conclusion</strong><br></h3>
+<p>This marks the preliminary success of lab2, I spent 20 hours on this lab.</p>
 
 
 </section>
