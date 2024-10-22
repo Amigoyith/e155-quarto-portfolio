@@ -7,7 +7,7 @@ Here is my schematics:
 
 **Module Relationships**<br>
 Here is my block diagram:
-![](lab3blockdiagram.jpg)
+![](\images\lab3blockdiagram.jpg)
 **Debounce**<br>
 The debounce strategy I choose to implement is based upon a counter (*debounce_counter*) and limitation time (*DEBOUNCE_TIME*) in order to make sure the noise from the hardware are not registered to results in incorrect display. The debounce_counter would basically increments 1 every clock cycle until reaching the desired clock cycles to transition to the PRESS states, else we would stay at the debounce state or if key is released, we transfer back to the SCAN states. The advantage of this mehod is it's accuracy in filtering out nose from the mechanical keys and gives flexibility by changing the DEBOUNCE_TIME to reflect for other kinds of switches or noise that may require fast or slower debounce time. However, the tradeoffs is there is a little delay in the display of digits as we need to have the debounce_counter to reach the DEBOUNCE TIME. Other possible methods could be implementing debounce on the hardware directly using a RC filter to only allow certain signals to pass through. This methods is quicker in response and also doesn't take up any digital resources for making the debounce, the tradeoff would be we can't adjust the filter as easy as the DEBOUNCE_TIME so we need to recalculate for the resistors and capcitors values each time for change in debounce requirements.<br>
 ![](images\fsmscanner.jpg)<br>
