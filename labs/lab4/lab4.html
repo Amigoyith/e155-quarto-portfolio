@@ -67,6 +67,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../../styles.css">
 </head>
@@ -147,7 +176,12 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#lab-4-digital-audio" id="toc-lab-4-digital-audio" class="nav-link active" data-scroll-target="#lab-4-digital-audio">Lab 4: Digital Audio</a></li>
+  <li><a href="#lab-4-digital-audio" id="toc-lab-4-digital-audio" class="nav-link active" data-scroll-target="#lab-4-digital-audio">Lab 4: Digital Audio<br></a>
+  <ul class="collapse">
+  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">Introduction<br></a></li>
+  <li><a href="#demonstration" id="toc-demonstration" class="nav-link" data-scroll-target="#demonstration">Demonstration<br></a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion<br></a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -158,10 +192,35 @@ ul.task-list li input[type="checkbox"] {
 
 
 <section id="lab-4-digital-audio" class="level2">
-<h2 class="anchored" data-anchor-id="lab-4-digital-audio">Lab 4: Digital Audio</h2>
+<h2 class="anchored" data-anchor-id="lab-4-digital-audio">Lab 4: Digital Audio<br></h2>
+<section id="introduction" class="level3">
+<h3 class="anchored" data-anchor-id="introduction">Introduction<br></h3>
+<p>This lab we moving towards microcontroller STM32 and configure the C code to use an I/O pin of MCU to play music on a 8ohms speaker based on the frequency and duration of each notes in the script. The major requirement lies with utilizing the datasheet of STM32L42KCU to configure the TIMER in playing out correct notes.<br> ### Design Choices and Testing Methodology<br> I used two timers which function is configured to show in the following diagram<br> <img src="images\lab4flow.jpg" class="img-fluid"> TIM16 is used for sound genetaion with a prescaler of 199 and TIM1 used for delay timing with a prescaler of 7999.<br> ##### Frequency Calculation Analysis<br> <strong>Time Configuration Parameters</strong>:<br> System clock: 80MHz, sound timer prescaler:199, delay timer prescaler:7999<br> <strong>Frequency Calculation</strong><br> The base timer frequency after my prescaler is:<br> <span class="math display">\[
+f_{base}=\dfrac{80MHz}{(199+1)}=400kHz
+\]</span> For a 16-bit timer: our maximum Auto-Reload Register (ARR) value is 65535 and the minimum ARR value would be 2 for toggle operation. Here is the minimum frequency (16-bit): <span class="math display">\[
+f_{min}=\dfrac{400kHz}{65535}=6.1Hz
+\]</span> Here is the maximum frequency (16-bit): <span class="math display">\[
+f_{max}=\dfrac{400kHz}{2}=200kHz
+\]</span> Now for the duration calculation, here is my delay timer base frequency: <span class="math display">\[
+f_{delay}=\dfrac{80MHz}{(7999+1)}=10kHz
+\]</span> Here is my minimum duration (one timer count): <span class="math display">\[
+t_{min}=\dfrac{1}{10kHz}=0.1ms
+\]</span> Here is my maximum duration: <span class="math display">\[
+t_{max}=\dfrac{65535}{10kHz}=6.5535s
+\]</span> Now we can check the accuracy of the actual frequency vs.&nbsp;desired frequency using the equation that: <span class="math display">\[
+ARR = \dfrac{80MHz}{(199+1)f_{desired}}
+\]</span> As it’s too much notes types to check, I used a matlab generated codes calculation to check for all frequency of pitch A2 to A5 and also delay of all possible note types being used in the music piece: <img src="images\lab4accuracycheck.png" class="img-fluid"> <strong>Hardware</strong> Here is my schematics for lab 4: <img src="images\lab4schem.jpg" class="img-fluid"><br></p>
+</section>
+<section id="demonstration" class="level3">
+<h3 class="anchored" data-anchor-id="demonstration">Demonstration<br></h3>
 <div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/J0WxFshaBSw?si=2lZFceno9yPJq5Lg" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
+</section>
+<section id="conclusion" class="level3">
+<h3 class="anchored" data-anchor-id="conclusion">Conclusion<br></h3>
+<p>I spent around 20 hours on this mostly due to unfamiliarity of writing C code and reading the datahseet.</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

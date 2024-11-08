@@ -67,6 +67,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../../styles.css">
 </head>
@@ -147,7 +176,12 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#lab-5-interrupts" id="toc-lab-5-interrupts" class="nav-link active" data-scroll-target="#lab-5-interrupts">Lab 5: Interrupts</a></li>
+  <li><a href="#lab-5-interrupts" id="toc-lab-5-interrupts" class="nav-link active" data-scroll-target="#lab-5-interrupts">Lab 5: Interrupts</a>
+  <ul class="collapse">
+  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">Introduction<br></a></li>
+  <li><a href="#design-choices-and-testing-methodology" id="toc-design-choices-and-testing-methodology" class="nav-link" data-scroll-target="#design-choices-and-testing-methodology">Design Choices and Testing Methodology<br></a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion<br></a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -159,8 +193,70 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="lab-5-interrupts" class="level2">
 <h2 class="anchored" data-anchor-id="lab-5-interrupts">Lab 5: Interrupts</h2>
+<section id="introduction" class="level3">
+<h3 class="anchored" data-anchor-id="introduction">Introduction<br></h3>
+<p>The main goal of this lab is to determine the speed of motors by reading from a quadrature encoder through interrupts. In the debug terminal of segger we would see the design measures and displays speed of motors in rev/s with update rate of at lease 1Hz.<br> Here is a cool gif showing how it works from our course website! <img src="images\quadrature_encoder.gif" class="img-fluid"></p>
+</section>
+<section id="design-choices-and-testing-methodology" class="level3">
+<h3 class="anchored" data-anchor-id="design-choices-and-testing-methodology">Design Choices and Testing Methodology<br></h3>
+<p>On the motors we have quad encoder +5V vcc and encoder A and B for signal outputs. So I first choose 5V-tolerant pins for encoder inputs to handle 5V encoder signals to make sure the board is not broken due to drawing too much current. Here is the schematics of my hardware: <br> <img src="images\lab5schematics.jpg" class="img-fluid"><br> I onfigured Both encoder channels (A and B) external interrupts and used the hardware timer TIM2 for precise timing measurements. I also set Interrupt priorities to ensure encoder readings take precedence over other system tasks. To ensure accurate speed measurement and direction detection (switching pos and neg terminal on motor), I have the system to handles two interrupts source for dual channel monitoring. Both Interrupts would triggers on both rising and falling edges, clears the interrupt flag and compares ENCODER A and B states:<br> <img src="images\lab5.jpg" class="img-fluid"><br> Within the main loop, we would calculates motor speed based on pulse count: <br> <span class="math display">\[
+Speed_{rev/s} = \dfrac{(Pulses_{counted} ) Scalefactor}{(PPR)  Interval}
+\]</span> Each encoder channel generates 360 pulse/s so using both edges of both channels would quadrables our resolution:<br> <span class="math display">\[
+PPR = 360 * 4 = 1440.
+\]</span> Where the time interval is measured in ms so we have to convert it into s by divison of 1000:<br> <span class="math display">\[
+Time_{s}=\dfrac{time_{diff}}{1000}
+\]</span> At the end, we have: <br> <span class="math display">\[
+Speed_{rev/s} = \dfrac{(Pulses_{counted} ) (4.5)(1000)Scale_factor}{(1440)(time_{diff})}
+\]</span> For direction, I have positive indicate clockwise rotation and negative values for counter-clockwise rotation.<br> For testing, I let the motors plug to 12 V to run at known reference speed of around 10 rev/s and also switched to negative 12 V to see a speed of around -10 rev/s. Besides manually counting edges, I also used a RPM meter based on the sounds of motor to determine the frequency to be around 1 Hz.<br> <strong>Interrupt vs Polling Analysis</strong><br></p>
+<table class="caption-top table">
+<caption>Demonstration of pipe table sytnax</caption>
+<colgroup>
+<col style="width: 40%">
+<col style="width: 27%">
+<col style="width: 31%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>for…</th>
+<th style="text-align: left;">Interrupt</th>
+<th style="text-align: right;">Polling</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Motor at 12V</td>
+<td style="text-align: left;">9.918 rev/s</td>
+<td style="text-align: right;">15.9 rev/s</td>
+</tr>
+<tr class="even">
+<td>Accuracy</td>
+<td style="text-align: left;">+/- &lt;0.05%</td>
+<td style="text-align: right;">+/- 50.3%</td>
+</tr>
+<tr class="odd">
+<td>Response time</td>
+<td style="text-align: left;">&lt;1 μs</td>
+<td style="text-align: right;">~1ms</td>
+</tr>
+<tr class="even">
+<td>CPU</td>
+<td style="text-align: left;">less</td>
+<td style="text-align: right;">much more</td>
+</tr>
+<tr class="odd">
+<td>cons</td>
+<td style="text-align: left;">needs careful desigm</td>
+<td style="text-align: right;">miss some pulses at high speeds</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="conclusion" class="level3">
+<h3 class="anchored" data-anchor-id="conclusion">Conclusion<br></h3>
+<p>I spend aroun 15 hours on this lab mostly because I didn’t see the starter codes updated…</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
