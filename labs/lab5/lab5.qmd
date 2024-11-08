@@ -1,1 +1,45 @@
 ## Lab 5: Interrupts
+### Introduction<br>
+The main goal of this lab is to determine the speed of motors by reading from a quadrature encoder through interrupts. In the debug terminal of segger we would see the design measures and displays speed of motors in rev/s with update rate of at lease 1Hz.<br>
+Here is a cool gif showing how it works from our course website!
+![](images\quadrature_encoder.gif)
+
+### Design Choices and Testing Methodology<br>
+
+On the motors we have quad encoder +5V vcc and encoder A and B for signal outputs. So I first choose 5V-tolerant pins for encoder inputs to handle 5V encoder signals to make sure the board is not broken due to drawing too much current. Here is the schematics of my hardware: <br>
+![](images\lab5schematics.jpg)<br>
+I onfigured Both encoder channels (A and B)  external interrupts and used the hardware  timer TIM2 for precise timing measurements. I also set Interrupt priorities to ensure encoder readings take precedence over other system tasks. To ensure accurate speed measurement and direction detection (switching pos and neg terminal on motor),  I have the system to handles two interrupts source for dual channel monitoring. Both Interrupts would triggers on both rising and falling edges, clears the interrupt flag and compares ENCODER A and B states:<br>
+![](images\lab5.jpg)<br>
+ Within the main loop, we would calculates motor speed based on pulse count: <br>
+$$
+Speed_{rev/s} = \dfrac{(Pulses_{counted} ) Scalefactor}{(PPR)  Interval}
+$$
+Each encoder channel generates 360 pulse/s so using both edges of both channels would quadrables our resolution:<br>
+$$
+PPR = 360 * 4 = 1440.
+$$
+Where the time interval is measured in ms so we have to convert it into s by divison of 1000:<br>
+$$
+Time_{s}=\dfrac{time_{diff}}{1000}
+$$
+At the end, we have: <br>
+$$
+Speed_{rev/s} = \dfrac{(Pulses_{counted} ) (4.5)(1000)Scale_factor}{(1440)(time_{diff})}
+$$
+For direction, I have positive indicate clockwise rotation and
+negative values for counter-clockwise rotation.<br>
+For testing, I let the motors plug to 12 V to run at known reference speed of around 10 rev/s and also switched to negative 12 V to see a speed of around -10 rev/s. Besides manually counting edges, I also used a RPM meter based on the sounds of motor to determine the frequency to be around 1 Hz.<br>
+**Interrupt vs Polling Analysis**<br>
+
+| for... | Interrupt | Polling |
+|---------|:-----|------:|
+| Motor at 12V | 9.918 rev/s   |   15.9 rev/s  |
+| Accuracy     | +/- <0.05%  |   +/- 50.3% |
+|  Response time      | <1 μs    |   ~1ms |
+|  CPU      | less   |   much more |
+|  cons      | needs careful desigm   |  miss  some pulses at high speeds |
+
+: Demonstration of pipe table sytnax
+
+### Conclusion<br>
+I spend aroun 15 hours on this lab mostly because I didn't see the starter codes updated...

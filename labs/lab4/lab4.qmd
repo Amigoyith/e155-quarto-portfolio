@@ -1,2 +1,52 @@
-## Lab 4: Digital Audio
+## Lab 4: Digital Audio<br>
+
+### Introduction<br>
+This lab we moving towards microcontroller STM32 and configure the C code to use an I/O pin of MCU to play music on a 8ohms speaker based on the frequency and duration of each notes in the script. The major requirement lies with utilizing the datasheet of STM32L42KCU to configure the TIMER in playing out correct notes.<br>
+### Design Choices and Testing Methodology<br>
+I used two timers which function is configured to show in the following diagram<br>
+![](images\lab4flow.jpg)
+TIM16 is used for sound genetaion with a prescaler of 199 and TIM1 used for delay timing with a prescaler of 7999.<br>
+##### Frequency Calculation Analysis<br>
+**Time Configuration Parameters**:<br>
+System clock: 80MHz, sound timer prescaler:199, delay timer prescaler:7999<br>
+**Frequency Calculation**<br>
+The base timer frequency after my prescaler is:<br>
+$$
+f_{base}=\dfrac{80MHz}{(199+1)}=400kHz
+$$
+For a 16-bit timer: our maximum Auto-Reload Register (ARR) value is 65535 and the minimum ARR value would be 2 for toggle operation.
+Here is the minimum frequency (16-bit):
+$$
+f_{min}=\dfrac{400kHz}{65535}=6.1Hz
+$$
+Here is the maximum frequency (16-bit):
+$$
+f_{max}=\dfrac{400kHz}{2}=200kHz
+$$
+Now for the duration calculation, here is my delay timer base frequency:
+$$
+f_{delay}=\dfrac{80MHz}{(7999+1)}=10kHz
+$$
+Here is my minimum duration (one timer count):
+$$
+t_{min}=\dfrac{1}{10kHz}=0.1ms
+$$
+Here is my maximum duration: 
+$$
+t_{max}=\dfrac{65535}{10kHz}=6.5535s
+$$
+Now we can check the accuracy of the actual frequency vs. desired frequency using the equation that:
+$$
+ARR = \dfrac{80MHz}{(199+1)f_{desired}}
+$$
+As it's too much notes types to check, I used a matlab generated codes calculation to check for all frequency of pitch A2 to A5 and also delay of all possible note types being used in the music piece:
+![](images\lab4accuracycheck.png)
+**Hardware**
+Here is my schematics for lab 4:
+![](images\lab4schem.jpg)<br>
+
+### Demonstration<br>
 {{< video https://youtu.be/J0WxFshaBSw?si=2lZFceno9yPJq5Lg >}}
+
+### Conclusion<br>
+I spent around 20 hours on this mostly due to unfamiliarity of writing C code and reading the datahseet.
