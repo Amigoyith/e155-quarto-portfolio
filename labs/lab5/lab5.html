@@ -199,7 +199,7 @@ window.Quarto = {
 </section>
 <section id="design-choices-and-testing-methodology" class="level3">
 <h3 class="anchored" data-anchor-id="design-choices-and-testing-methodology">Design Choices and Testing Methodology<br></h3>
-<p>On the motors we have quad encoder +5V vcc and encoder A and B for signal outputs. So I first choose 5V-tolerant pins for encoder inputs to handle 5V encoder signals to make sure the board is not broken due to drawing too much current. Here is the schematics of my hardware: <br> <img src="images\lab5schematics.jpg" class="img-fluid"><br> I onfigured Both encoder channels (A and B) external interrupts and used the hardware timer TIM2 for precise timing measurements. I also set Interrupt priorities to ensure encoder readings take precedence over other system tasks. To ensure accurate speed measurement and direction detection (switching pos and neg terminal on motor), I have the system to handles two interrupts source for dual channel monitoring. Both Interrupts would triggers on both rising and falling edges, clears the interrupt flag and compares ENCODER A and B states:<br> <img src="images\lab5.jpg" class="img-fluid"><br> Within the main loop, we would calculates motor speed based on pulse count: <br> <span class="math display">\[
+<p>On the motors we have quad encoder +5V vcc and encoder A and B for signal outputs. So I first choose 5V-tolerant pins for encoder inputs to handle 5V encoder signals to make sure the board is not broken due to drawing too much current. Here is the schematics of my hardware: <br> <img src="images\lab5schematics.jpg" class="img-fluid"><br> I configured both encoder channels (A and B) external interrupts and used the hardware timer TIM2 for precise timing measurements. I also set Interrupt priorities to ensure encoder readings take precedence over other system tasks. To ensure accurate speed measurement and direction detection (switching pos and neg terminal on motor), I have the system to handles two interrupts source for dual channel monitoring. Both Interrupts would triggers on both rising and falling edges, clears the interrupt flag and compares ENCODER A and B states:<br> <img src="images\lab5.jpg" class="img-fluid"><br> Within the main loop, we would calculates motor speed based on pulse count: <br> <span class="math display">\[
 Speed_{rev/s} = \dfrac{(Pulses_{counted} ) Scalefactor}{(PPR)  Interval}
 \]</span> Each encoder channel generates 360 pulse/s so using both edges of both channels would quadrables our resolution:<br> <span class="math display">\[
 PPR = 360 * 4 = 1440.
@@ -209,7 +209,6 @@ Time_{s}=\dfrac{time_{diff}}{1000}
 Speed_{rev/s} = \dfrac{(Pulses_{counted} ) (4.5)(1000)Scale_factor}{(1440)(time_{diff})}
 \]</span> For direction, I have positive indicate clockwise rotation and negative values for counter-clockwise rotation.<br> For testing, I let the motors plug to 12 V to run at known reference speed of around 10 rev/s and also switched to negative 12 V to see a speed of around -10 rev/s. Besides manually counting edges, I also used a RPM meter based on the sounds of motor to determine the frequency to be around 1 Hz.<br> <strong>Interrupt vs Polling Analysis</strong><br></p>
 <table class="caption-top table">
-<caption>Demonstration of pipe table sytnax</caption>
 <colgroup>
 <col style="width: 40%">
 <col style="width: 27%">
