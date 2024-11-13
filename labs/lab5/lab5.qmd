@@ -8,7 +8,7 @@ Here is a cool gif showing how it works from our course website!
 
 On the motors we have quad encoder +5V vcc and encoder A and B for signal outputs. So I first choose 5V-tolerant pins for encoder inputs to handle 5V encoder signals to make sure the board is not broken due to drawing too much current. Here is the schematics of my hardware: <br>
 ![](images\lab5schematics.jpg)<br>
-I onfigured Both encoder channels (A and B)  external interrupts and used the hardware  timer TIM2 for precise timing measurements. I also set Interrupt priorities to ensure encoder readings take precedence over other system tasks. To ensure accurate speed measurement and direction detection (switching pos and neg terminal on motor),  I have the system to handles two interrupts source for dual channel monitoring. Both Interrupts would triggers on both rising and falling edges, clears the interrupt flag and compares ENCODER A and B states:<br>
+I configured both encoder channels (A and B) external interrupts and used the hardware timer TIM2 for precise timing measurements. I also set Interrupt priorities to ensure encoder readings take precedence over other system tasks. To ensure accurate speed measurement and direction detection (switching pos and neg terminal on motor),  I have the system to handles two interrupts source for dual channel monitoring. Both Interrupts would triggers on both rising and falling edges, clears the interrupt flag and compares ENCODER A and B states:<br>
 ![](images\lab5.jpg)<br>
  Within the main loop, we would calculates motor speed based on pulse count: <br>
 $$
@@ -39,7 +39,6 @@ For testing, I let the motors plug to 12 V to run at known reference speed of ar
 |  CPU      | less   |   much more |
 |  cons      | needs careful desigm   |  miss  some pulses at high speeds |
 
-: Demonstration of pipe table sytnax
 
 ### Conclusion<br>
 I spend aroun 15 hours on this lab mostly because I didn't see the starter codes updated...

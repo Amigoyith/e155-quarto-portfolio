@@ -1,12 +1,14 @@
 ## Lab 4: Digital Audio<br>
 
-### Introduction<br>
+### Introduction
 This lab we moving towards microcontroller STM32 and configure the C code to use an I/O pin of MCU to play music on a 8ohms speaker based on the frequency and duration of each notes in the script. The major requirement lies with utilizing the datasheet of STM32L42KCU to configure the TIMER in playing out correct notes.<br>
-### Design Choices and Testing Methodology<br>
+
+### Design Choices and Testing Methodology
 I used two timers which function is configured to show in the following diagram<br>
 ![](images\lab4flow.jpg)
 TIM16 is used for sound genetaion with a prescaler of 199 and TIM1 used for delay timing with a prescaler of 7999.<br>
-##### Frequency Calculation Analysis<br>
+
+##### **Frequency Calculation Analysis**
 **Time Configuration Parameters**:<br>
 System clock: 80MHz, sound timer prescaler:199, delay timer prescaler:7999<br>
 **Frequency Calculation**<br>
@@ -14,10 +16,10 @@ The base timer frequency after my prescaler is:<br>
 $$
 f_{base}=\dfrac{80MHz}{(199+1)}=400kHz
 $$
-For a 16-bit timer: our maximum Auto-Reload Register (ARR) value is 65535 and the minimum ARR value would be 2 for toggle operation.
+For a 16-bit timer: our maximum Auto-Reload Register (ARR) value is 65535 and the minimum ARR value would be 1 for toggle operation but will add one to account for the timer increments from 0 to ARR.
 Here is the minimum frequency (16-bit):
 $$
-f_{min}=\dfrac{400kHz}{65535}=6.1Hz
+f_{min}=\dfrac{400kHz}{65536}=6.1Hz
 $$
 Here is the maximum frequency (16-bit):
 $$
@@ -41,9 +43,11 @@ ARR = \dfrac{80MHz}{(199+1)f_{desired}}
 $$
 As it's too much notes types to check, I used a matlab generated codes calculation to check for all frequency of pitch A2 to A5 and also delay of all possible note types being used in the music piece:
 ![](images\lab4accuracycheck.png)
-**Hardware**
+
+**Hardware**<br>
 Here is my schematics for lab 4:
 ![](images\lab4schem.jpg)<br>
+The 10K potentiometer is used to control the volumne of the speaker, with more resistance the lower the volums. The LM386 voice amplifier is used to provide a 50 gain.
 
 ### Demonstration<br>
 {{< video https://youtu.be/J0WxFshaBSw?si=2lZFceno9yPJq5Lg >}}

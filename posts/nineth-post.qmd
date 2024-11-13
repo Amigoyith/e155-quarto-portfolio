@@ -1,0 +1,14 @@
+---
+title: "Posts Section"
+
+author: "Amy Liu"
+date: "11/01/24"
+categories:
+  - reflection
+  - labreport
+draft: false
+---
+
+**Week 9 Reflection**<br>
+
+The week's lecture we discussed how to contol liquid crystal displays with digital device and how to implement basic operation of the video graphics array protocol. Besides using FPGA, Graphics Processing Units (GPUs) are specialized digital devices designed to render images etc. for display on monitors. GPU came with predefined pipelines specialized for rendering tasks in high speed with little latency. GPUs are what we normally used in daily applications like gaming and computing. GPU is consists of the core procussing unit to handles graphical computation, Video Memory (VRAM) to store frame buffers and textures and display output interfaces port like VGA, HDMI to connect with monitor. Good graphics card (like NVIDIA GeForce RTX 4080) is really expensive but doesn't really take much impact on daily usage of computer unless you are a gamer...

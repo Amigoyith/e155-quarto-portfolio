@@ -1,3 +1,34 @@
 ## Lab 6: The Internet of Things and Serial Peripheral Interface
 
 ### Introduction<br>
+In this lab, we aims to implement an IoT temperature sensing system using an STM32 microcontroller. a DS1722 temperature sensor and an ESP8266 module acting as the web server interface. The internet-accessible device can also control an on PCB LED. The primary functionality includes measuring temperature data, setting the resolution of the measurements, and displaying the results on a simple website. We also start learning how to use logic analyzer in debugging the SPI link and UART link for communication protocol's implementation.
+
+### Design Choices and Testing Methodology<br>
+Here is the hardware setup, the ESP8266 module is directly install on the corresponding on-board connectors.<br>
+![](images\lab6.jpg)<br>
+I used a mix of CMSIS libraries for hardware abstraction and wrote the SPI libraries for direct register-level control. The code structures is approached through a modular level as follow:
+
+- SPI and USART communication protocols
+- DS1722 sensor Interaction functions
+- Web server and request handling functions for the ESP8266 module.
+
+The ESP8266 receives HTTP requests from client using the GET requests for different actions like turning on/off the LED and setting temperature chip to differenet resolution. Here is a picture of the webpage displaying temperature at differnet resolutions: <br>
+![](images\lab6 web display.jpg)<br>
+In the *DS1722 modules*, we send instructions to the chip through SPI and receive 16 bit raw temperature (2 bytes) of Most Significant Bit (MSB) and Least Significant Bit (LSB). To form reasonable temperature data, the hiByte is shifted left by 8 bits and combined with loByte using a bitwise OR operation. This forms a 16-bit signed integer where
+the upper 8 bits are the integer part and the lower 8 bits represent fractional values. To convert this fixed-point value into a floating-point temperature reading, we divide by 256 (2^8).<br>
+
+In the *SPI module*, the protocol is configured with flexible options for baud rate (br), clock polarity (cpol), and clock phase (cpha), allowing the user to match the settings required by different SP
+I peripherals but in the main function I refer to the DS1722 datasheet for the corresponding values.
+I have a SPICSHIGH and SPICSLOW function to digitally write the CS pins high, do the transaction and then low. I set up a 2-line SPI (full-duplex mode) with an 8-bit data size.
+In the SendReceives function, it waits for the transmit buffer to be empty before sending data (TXE flag) and waits for the receive buffer to be filled before reading data (RXNE flag) to ensures synchronized data exchange.
+A pointer to the SPI data register (SPI1->DR) is used with a volatile cast to ensure direct and immediate read/write without compiler optimizations that may introduce delays.<br>
+To test my design, I put my fingers on the temperature chip and refresh webpages to see temperature rises to close body temperature and used a dustor to spray in order to test for negative temperature.<br>
+
+Further, I used a logic analyzer to test my SPI transaction is working as normal. The following is a while loop of reading temperature only to show that we are sending and receiving appropriate values.<br>
+![](images\SPI single.jpg)<br>
+And here is an zoomed out version of the SPI communication when I refresh webpages:<br>
+![](images\SPI all.jpg)<br>
+The first line is clk, second line is CS, third line is CIPO and fourth line is COPI.<br>
+
+### Conclusion<br>
+I spend 30 hours on this lab mainly to configure the SPI protocols correctly and also was frustrated on the wire break within the breadboard causing connection issues.

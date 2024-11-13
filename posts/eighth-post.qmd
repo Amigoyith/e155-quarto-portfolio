@@ -1,0 +1,13 @@
+---
+title: "Posts Section"
+
+author: "Amy Liu"
+date: "10/24/24"
+categories:
+  - reflection
+  - labreport
+draft: false
+---
+
+**Week 8 Reflection**<br>
+This week we learned about AES encryption on FPGA making it to be a hardware accelerator.  I also learned about how to use logic analyzer along with decoder to debug the hardware which came in handy we first configure the SPI protocols to see whether it's actually sending or receiving bits (similar to debugger on segger but more on hardware side). Because this week's content is on AES, I'm a bit curious over security over embedded system. Embedded security contains a lot of areas like side channel attacks (SCA) on cyber-physical systems, RISC-V wifi access point, fault injection attacks using ChipWhisperer board (past embedded security challenges: https://www.csaw.io/esc). In lab 6 we worked on Internet of Things device so I looked at data exfiltration attacks against IoT device. In our lab, we didn't care about public sharing the temperature data so there isn't an explicit unauthorized data exfiltration as we didn't even bother to setup any defend mechanisms. Besides adding a Wi-Fi access point or web server authentication for users to enter password, we could use AES to encypt the data transferred. In the lab 6 SPI module, we could modify the SPI module to route data through the AES core. For outgoing data, the SPI module should send plaintext to the AES core for encryption before transmission. For incoming data, the SPI module should route ciphertext to the AES core for decryption before processing.
