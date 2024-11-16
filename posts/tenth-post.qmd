@@ -1,0 +1,22 @@
+---
+title: "Posts Section"
+
+author: "Amy Liu"
+date: "11/07/24"
+categories:
+  - reflection
+  - labreport
+draft: false
+---
+
+**Week 10 Reflection**<br>
+
+This week we have the design review on our project. The biggest question in our project is how to distribute the physics engine calculation correctly between FPGA and MCU (which appears to be a common problems among other projects as well). On the google form feedback, most students suggested do the calculation on MCUs given the fact that the FPGA has to be the one driving the display. For sample testcases without the display, most suggested hardcode the acceleration data and test with a single particle first to see if that simple motion match with expectations. For collision detection, we could make a simple by letting the particles stick and fall down together. For more complicated collision, we could go back to physics 24 regarding the 2D collision theory where the balls are like point masses. mass 2 is initially at reast conserve momentum along the original direction of mass 1(the x-axis)/ 
+$$
+m_1v_1=m_1v_1'cos θ_1 + m_2v_2'cos θ_2
+$$
+This [kinetic equaion](https://courses.lumenlearning.com/suny-physics/chapter/8-6-collisions-of-point-masses-in-two-dimensions/#:~:text=Two%2Ddimensional%20collisions%20of%20point,%2B%20m2v%E2%80%B22y.) provided us the before and after velocity along with angles after the collisions for the two point masses of equal mass:
+$$
+1/2mv_1^2=1/2mv_1'^2 + 1/2mv_2'^2 + mv_1'v_2'cos(θ_1−θ_2)
+$$
+
