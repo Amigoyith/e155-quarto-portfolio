@@ -1,0 +1,21 @@
+---
+title: "Posts Section"
+
+author: "Amy Liu"
+date: "11/15/24"
+categories:
+  - reflection
+  - labreport
+draft: false
+---
+
+**Week 11 Reflection**<br>
+
+This week in class we learned about Direct Memory Access and configured DMA on the MCU using the tutorial sample code. I looked more into different DMA bus access schemes used in modern systems: Burst DMA that can performs large data transfers in concentrated bursts and have high speed performace in the cost of notable CPU idle periods, Cycle-Stealing DMA that operates between CPU instructions but has slower performance and transparent DMA that excutes single operations with CPU yield verification and eliminates CPU throtting (mechanism that would slow down a processor to reduce energy use)[1]. Interestingly most modern DMS controllers (like the DARWIN ARM microcontrollers) incorporates hardware acceleration for AES encryption as security protocols.<br>
+
+![](images\burst_DMA.jpg)<br>
+Fig 1. Architecture of bust DMA during operations [1]<br>
+
+Currently, health and wearable devices that handle large amounts of data throughput but needs to be working for long period of time (requires low power consumption) which makes analog device that has the burst DMA architectures on MCU ideal for such low power werable devices[1].<br>
+Reference: [1]B. Hurst, “How to Accelerate Peripheral Monitoring in Low Power Wearables with DMA,” Analog.com, 2022. https://www.analog.com/en/resources/analog-dialogue/articles/how-to-accelerate-peripheral-monitoring-in-low-power-wearables-with-dma.html (accessed Nov. 16, 2024).
+‌
