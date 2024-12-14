@@ -1,0 +1,17 @@
+---
+title: "Posts Section"
+
+author: "Amy Liu"
+date: "12/6/24"
+categories:
+  - reflection
+  - labreport
+draft: false
+---
+
+**Week 12 Reflection**<br>
+
+This week we approached the end of our semester and also our Microps class so I want to briefly reflect on the characteristics and traits I determined to develop for the class process. I learned how to use my resources well to better achieve the task. This is mostly reflected in the use of not only debuggers or test benches on the Segger Studio and Radiant software but also testing hardware through a logic analyzer, connection with a multimeter, and building circuit of voltage divider when the potentiometer is not present for the song lab. I also endured (unwillingly) many heartbreaking moments where the code stopped working right before my checkoff and I feel like I become more persistent on one task and diligent. However, the lesson learned here is also to make your code persistent and not just magically work under one random chance. For instance, for my keypad checkoff of the seven-segment display, I had a floating reset so sometimes resetting works while other times didn't. The same occurred for my temperature sensor + UART checkoff where I sacrificed the quality of my circuit building for a time and turns out the over-long wires broke into the breadboard which pushed me to rewire right before my checkoff.
+
+I also want to reflect a bit on our project planning. Our project turned out to be pretty successful (you can learn more about it [here](https://interactive-physics-engine.netlify.app/)). However, we pushed back the specs a lot from 256 particles due to the realization of the lack of state registers on our FPGA. Our original ideas were to store and then update the position of each particle but it turns out that after we configured the display drive, we can only allow the array for 2 particles. So we had to move to the other rotating memory buffers where we stored the status of the image for how the board should look like in this current frame and the previous frame. We pushed the physics engine to the last of the process which turned out to be not the most ideal planning and took much longer time than we thought. In the end, though, we still kind of succeeded and happy with our project.
+‌
