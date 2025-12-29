@@ -42,6 +42,20 @@
     "text": "Week 11 Reflection\nThis week in class we learned about Direct Memory Access and configured DMA on the MCU using the tutorial sample code. I looked more into different DMA bus access schemes used in modern systems: Burst DMA that can performs large data transfers in concentrated bursts and have high speed performace in the cost of notable CPU idle periods, Cycle-Stealing DMA that operates between CPU instructions but has slower performance and transparent DMA that excutes single operations with CPU yield verification and eliminates CPU throtting (mechanism that would slow down a processor to reduce energy use)[1]. Interestingly most modern DMS controllers (like the DARWIN ARM microcontrollers) incorporates hardware acceleration for AES encryption as security protocols.\n Fig 1. Architecture of bust DMA during operations [1]\nCurrently, health and wearable devices that handle large amounts of data throughput but needs to be working for long period of time (requires low power consumption) which makes analog device that has the burst DMA architectures on MCU ideal for such low power werable devices[1]. Reference: [1]B. Hurst, “How to Accelerate Peripheral Monitoring in Low Power Wearables with DMA,” Analog.com, 2022. https://www.analog.com/en/resources/analog-dialogue/articles/how-to-accelerate-peripheral-monitoring-in-low-power-wearables-with-dma.html (accessed Nov. 16, 2024). ‌"
   },
   {
+    "objectID": "labs/lab7/lab7.html",
+    "href": "labs/lab7/lab7.html",
+    "title": "E155 Portfolio",
+    "section": "",
+    "text": "For the final project, me and Stephen created an IMU-based simple gravity simulation using FPGA as display control and computation and MCU talking to the IMU providing axis reading. Given the length of project, we created a new site Gravity on 2D Object documenting our work."
+  },
+  {
+    "objectID": "labs/lab7/lab7.html#final-project-2d-interactive-physics-engine",
+    "href": "labs/lab7/lab7.html#final-project-2d-interactive-physics-engine",
+    "title": "E155 Portfolio",
+    "section": "",
+    "text": "For the final project, me and Stephen created an IMU-based simple gravity simulation using FPGA as display control and computation and MCU talking to the IMU providing axis reading. Given the length of project, we created a new site Gravity on 2D Object documenting our work."
+  },
+  {
     "objectID": "labs/lab5/lab5.html",
     "href": "labs/lab5/lab5.html",
     "title": "E155 Portfolio",
