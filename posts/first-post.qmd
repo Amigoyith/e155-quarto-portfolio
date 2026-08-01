@@ -10,16 +10,16 @@ draft: false
 ---
 **Week 1 Reflection**<br>
 
-This week in lab I had learned SystemVerilog programming on Lattice Radiant through basic case statements 
-and also how to use QuestaSim and testbenches in debugging and verifying the codes give desired outcome (similar to C++'s test cases).
+This week in lab I had learned SystemVerilog programming on Lattice Radiant through basic case statements and also how to use QuestaSim and testbenches in debugging and verifying the codes give desired outcome (similar to C++'s test cases).
 In Lecture, I learned about what is propagation delay and contamination delay in flip-flop and also the setup time constrains and holdtime constraints.
 These are useful knowledge coming into digital design interview and working with synchronous clock system. In class, we also practiced in designing a finite state machine.
 Through the lab checkoff this week, I realized the harm of floating reset could cause whether the led works depends on luck.
 The course really trained me up in developing determination in achieveing all the lab's goal. 
 
+This week's AI Prototype assignment is to experiment with using AI as a coding assistant to generate HDL for Lab 1.
 The AI Prototype turns out to work better than I imagined. I put in some sample codes and the truth table of the XOR-AND into chat-GPT 4 free trial. It's outputs did successfully synthesized on first try.
-instead of using the simple operators like ^ and & for XOR and AND relation, chat-GPT just write a combinational case statements for each line of the truth table.
+Though instead of using the simple operators like ^ and & for XOR and AND relation, chat-GPT just write a combinational case statements for each line of the truth table, taking instruction pretty explicitly.
 Moreover, it doesn't realized using a low-speed oscillator can make a 2.4 Hz blinking. Instead it kept the HSOSC module from sample code and says for reset (if counter >= 10000000 begin) slow_clk <= ~slow_clk;
-I'm not entirely sure what it means by slow_clk as there is almost no useful comments on the Chat-GPT code. There is also no reset. 
+The purpose and behavior of slow_clk were not clearly documented because the generated code contained very few useful comments. The design also did not include a reset mechanism, which could make the circuit’s initial state and startup behavior less predictable.
 
 ‌

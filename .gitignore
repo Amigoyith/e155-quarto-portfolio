@@ -2,3 +2,4 @@
 /_site/
 /env/
 /Thumbs.db/
+**/*.quarto_ipynb

@@ -16,5 +16,10 @@ about:
 
 
 ---
-Xiyuan Liu (Amy) is a Junior Undergraduate Student at [Harvey Mudd College](https://hmc.edu) majoring in Engineering with the concentration on computer and electric engineering. Her career interests are in the field of embeded systems and automation. In her free time, she enjoys making digital arts and watching animes.
-If you have any questions or suggestion regarding contents of this site, feel free to contact me through this email: amyliu01@g.hmc.edu.
+Welcome to my portfolio!
+
+My official name is Xiyuan Liu, but just Amy sounds good as well. I am a undergraduate rising senior at [Harvey Mudd College](https://hmc.edu), majoring in Engineering with a concentration in electrical and computer engineering and a minor in Philosophy.
+
+I enjoy exploring a broad range of electrical engineering fields from hardware design and testing to embedded systems. Outside of engineering, I spend my free time creating digital art and watching anime.
+
+If you have any questions or suggestions regarding the contents of this site, feel free to contact me at amyliu01@g.hmc.edu.
